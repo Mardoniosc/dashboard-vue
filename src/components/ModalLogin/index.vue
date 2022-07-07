@@ -30,7 +30,7 @@
         </span>
       </label>
 
-      <label class="block">
+      <label class="block mt-9">
         <span class="text-lg font-medium text-gray-800">Senha</span>
         <input
           v-model="state.password.value"
@@ -55,7 +55,7 @@
         :class="{
           'opacity-50': state.isLoading
         }"
-        class="px-8 py-3 mt-10 text2xl font-bold text-white rounded-full bg-brand-main focus:outline-none transition-all duration-150"
+        class="px-8 py-3 mt-10 text-2xl font-bold text-white rounded-full bg-brand-main focus:outline-none transition-all duration-150"
       >
         Entrar
       </button>
@@ -63,23 +63,36 @@
   </div>
 </template>
 <script>
-import { reactive } from '@vue/reactivity'
+import { reactive } from 'vue'
+import { useField } from 'vee-validate'
 import useModal from '@/hooks/useModal'
+import { validateEmptyAndLength3, validateEmptyAndEmail } from '../../utils/validators'
+
 export default {
 
   setup () {
     const modal = useModal()
 
+    const {
+      value: emailValue,
+      errorMessage: emailErrorMessage
+    } = useField('email', validateEmptyAndEmail)
+
+    const {
+      value: passwordValue,
+      errorMessage: passwordErrorMessage
+    } = useField('password', validateEmptyAndLength3)
+
     const state = reactive({
       hasErros: false,
       isLoading: false,
       email: {
-        value: '',
-        errorMessage: ''
+        value: emailValue,
+        errorMessage: emailErrorMessage
       },
       password: {
-        value: '',
-        errorMessage: ''
+        value: passwordValue,
+        errorMessage: passwordErrorMessage
       }
     })
 
