@@ -1,0 +1,9 @@
+<!-- eslint-disable vue/multi-word-component-names -->
+<template >
+  <h1>Modal de Criação de Conta</h1>
+</template>
+<script>
+export default {
+
+}
+</script>
