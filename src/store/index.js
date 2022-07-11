@@ -1,14 +1,8 @@
-import { createStore } from 'vuex'
+import { readonly } from 'vue'
+import UserModule from './user'
+import GlobalModule from './global'
 
-export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+export default readonly({
+  User: UserModule,
+  Global: GlobalModule
 })
