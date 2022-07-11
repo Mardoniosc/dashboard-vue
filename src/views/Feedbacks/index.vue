@@ -51,7 +51,7 @@
           v-else
           v-for="(feedback, index) in state.feedbacks"
           :key="feedback.id"
-          :is-opened="index === 0"
+          :is-opended="index === 0"
           :feedback="feedback"
           class="mb-8"
         />
